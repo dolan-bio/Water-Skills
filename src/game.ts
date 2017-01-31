@@ -1,6 +1,10 @@
 namespace WaterSkillGame {
+    export class ExtendedGame extends Phaser.Game {
+        public stateLoadedCallback: Function;
+    }
+
     export class Game {
-        private game: Phaser.Game;
+        private game: ExtendedGame;
         private width: number;
         private height: number;
 
@@ -11,7 +15,7 @@ namespace WaterSkillGame {
 
         public run(container: string, loadedCallback: Function): void {
             // Phaser.AUTO - determine the renderer automatically (canvas, webgl)
-            this.game = new Phaser.Game(this.width, this.height, Phaser.AUTO, container, WaterSkillGame.States.MainState);
+            this.game = new ExtendedGame(this.width, this.height, Phaser.AUTO, container, WaterSkillGame.States.MainState);
             this.game.stateLoadedCallback = loadedCallback;
         }
 

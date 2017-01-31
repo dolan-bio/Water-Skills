@@ -1,10 +1,14 @@
 namespace WaterSkillGame.States {
-    export interface IMainState extends Phaser.State {
+    class ExtendedState extends Phaser.State {
+        public game: ExtendedGame;
+    }
+
+    export interface IMainState extends ExtendedState {
         setItemsArray(array: Array<Models.SkillModel>): void;
         setWaterLevel(level?: number, delay?: number): void;
     }
 
-    export class MainState extends Phaser.State {
+    export class MainState extends ExtendedState {
 
         private graphics: Phaser.Graphics;
         private water: Prefabs.Water;
