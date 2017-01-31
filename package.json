@@ -1,0 +1,22 @@
+{
+  "name": "water-skills",
+  "version": "1.0.0",
+  "description": "A floaty water physics simulation for all of my skills written in Phaser",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dolan-bio/Water-Skills.git"
+  },
+  "author": "Dolan Miu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dolan-bio/Water-Skills/issues"
+  },
+  "homepage": "https://github.com/dolan-bio/Water-Skills#readme",
+  "devDependencies": {
+    "typings": "^2.1.0"
+  }
+}
