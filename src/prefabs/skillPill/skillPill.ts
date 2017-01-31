@@ -1,7 +1,6 @@
 namespace WaterSkillGame.Prefabs {
     export class SkillPill extends Phaser.Sprite {
 
-        private water: Water;
         private inWater: boolean;
         private buoyancyManager: BuoyancyManager;
 
@@ -15,18 +14,18 @@ namespace WaterSkillGame.Prefabs {
             this.body.angularVelocity = (Math.random() * 8) - 4;
             // this.body.debug = true;
 
-            /*var text = this.game.add.text(0, 0, "MyText", { font: '14px Raleway', align: 'center' }); 
-            text.anchor.setTo(0.5); 
-            text.setShadow(5, 5, 'rgba(0,0,0,0.5)', 5); 
-            //var textSprite = this.add.sprite(this.world.centerX - 100, this.world.centerY - 200, null); 
-            this.addChild(text); 
-            //this.physics.enable(textSprite, Phaser.Physics.ARCADE); 
+            /*var text = this.game.add.text(0, 0, "MyText", { font: '14px Raleway', align: 'center' });
+            text.anchor.setTo(0.5);
+            text.setShadow(5, 5, 'rgba(0,0,0,0.5)', 5);
+            //var textSprite = this.add.sprite(this.world.centerX - 100, this.world.centerY - 200, null);
+            this.addChild(text);
+            //this.physics.enable(textSprite, Phaser.Physics.ARCADE);
             /*textSprite.body.bounce.y = 1; 
-            textSprite.body.gravity.y = 2000; 
+            textSprite.body.gravity.y = 2000;
             textSprite.body.collideWorldBounds = true;*/
         }
 
-        updatePhysics(point: Phaser.Point, water: Water) {
+        public updatePhysics(point: Phaser.Point, water: Water): void {
             if (point) {
                 this.buoyancyManager.applyAABBBuoyancyForces(this.body, point);
             }
