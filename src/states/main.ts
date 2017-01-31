@@ -1,10 +1,10 @@
 namespace WaterSkillGame.States {
     export interface IMainState extends Phaser.State {
-        setItemsArray(array: Array<Models.SkillModel>);
-        setWaterLevel(level?: number, delay?: number);
+        setItemsArray(array: Array<Models.SkillModel>): void;
+        setWaterLevel(level?: number, delay?: number): void;
     }
 
-    export class MainState extends Phaser.State implements IMainState {
+    export class MainState extends Phaser.State {
 
         private graphics: Phaser.Graphics;
         private water: Prefabs.Water;
@@ -20,7 +20,7 @@ namespace WaterSkillGame.States {
             this.skillPills = new Array<Prefabs.SkillPill>();
         }
 
-        create() {
+        public create(): void {
             this.skillPillGroup = new Phaser.Group(this.game);
             this.waterGroup = new Phaser.Group(this.game);
             this.waterGroup.z = 10;
@@ -48,7 +48,7 @@ namespace WaterSkillGame.States {
             this.game.stateLoadedCallback();
         }
 
-        update() {
+        public update(): void {
             this.graphics.clear();
             this.water.update(this.graphics);
             this.graphics.endFill();
@@ -58,17 +58,11 @@ namespace WaterSkillGame.States {
             });
         }
 
-        private setUpPhysics() {
-            this.game.physics.startSystem(Phaser.Physics.P2JS);
-            this.game.physics.p2.gravity.y = 1000;
-            this.game.physics.p2.restitution = 0.3;
-        }
-
-        setWaterLevel(level?: number, delay?: number) {
+        public setWaterLevel(level?: number, delay?: number): void {
             this.water.setLevel(level, delay);
         }
 
-        setItemsArray(array: Array<Models.SkillModel>) {
+        public setItemsArray(array: Array<Models.SkillModel>): void {
             array.forEach(skillModel => {
                 let skillPill = this.skillPillFactory.newInstance(100, 100, skillModel.skill.name, 100);
                 this.game.add.existing(skillPill);
@@ -76,6 +70,12 @@ namespace WaterSkillGame.States {
                 this.skillPills.push(skillPill);
                 this.skillPillGroup.add(skillPill);
             });
+        }
+
+        private setUpPhysics(): void {
+            this.game.physics.startSystem(Phaser.Physics.P2JS);
+            this.game.physics.p2.gravity.y = 1000;
+            this.game.physics.p2.restitution = 0.3;
         }
     }
 }

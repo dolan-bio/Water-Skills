@@ -1,10 +1,10 @@
 namespace WaterSkillGame.Prefabs {
-     export class WaterPoint extends Phaser.Point {
-        private k: number;
-        private game: Phaser.Game;
-
+    export class WaterPoint extends Phaser.Point {
         public targetHeight: number;
         public speed: number;
+
+        private k: number;
+        private game: Phaser.Game;
 
         constructor(game: Phaser.Game, x: number, y: number, targetHeight: number, k: number) {
             super(x, y);
@@ -14,7 +14,7 @@ namespace WaterSkillGame.Prefabs {
             this.speed = 0;
         }
 
-        update(dampening: number, tension: number) {
+        public update(dampening: number, tension: number): void {
             let deltaY = this.targetHeight - this.y;
             this.speed += tension * deltaY - this.speed * dampening;
             this.y += this.speed;

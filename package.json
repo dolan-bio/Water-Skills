@@ -4,7 +4,11 @@
   "description": "A floaty water physics simulation for all of my skills written in Phaser",
   "main": "dist/bundle.js",
   "scripts": {
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "tsc": "tsc -p .",
+    "uglify": "uglifyjs --compress --mangle --output='dist/bundle.js' -- dist/bundle.js",
+    "build": "npm run tsc && npm run uglify",
+    "start": "npm run tsc && http-server ."
   },
   "repository": {
     "type": "git",
@@ -17,6 +21,10 @@
   },
   "homepage": "https://github.com/dolan-bio/Water-Skills#readme",
   "devDependencies": {
-    "typings": "^2.1.0"
+    "http-server": "^0.9.0",
+    "tslint": "^4.4.2",
+    "typescript": "^2.1.5",
+    "typings": "^2.1.0",
+    "uglify-js": "github:mishoo/UglifyJS2#harmony"
   }
 }

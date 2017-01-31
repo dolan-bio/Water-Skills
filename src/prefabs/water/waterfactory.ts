@@ -11,7 +11,7 @@ namespace WaterSkillGame.Prefabs {
             this.resolution = 20;
         }
 
-        newInstance(level: number): Water {
+        public newInstance(level: number): Water {
             let waterHeight = this.game.height - (this.game.height * level);
             let waterPoints = this.createwaterPoints(this.resolution, waterHeight, this.k);
             let points = this.createWater(waterPoints);

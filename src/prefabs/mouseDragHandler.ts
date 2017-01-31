@@ -1,10 +1,9 @@
 namespace WaterSkillGame.Prefabs {
     export class MouseDragHandler extends p2.Body {
+        public sprites: Array<Phaser.Sprite>;
 
         private game: Phaser.Game;
         private mouseConstraint: p2.Constraint;
-
-        public sprites: Array<Phaser.Sprite>;
 
         constructor(game: Phaser.Game) {
             super();
@@ -17,7 +16,7 @@ namespace WaterSkillGame.Prefabs {
             game.input.addMoveCallback(this.move, this);
         }
 
-        private click(pointer: any) {
+        private click(pointer: any): void {
             let bodies = this.game.physics.p2.hitTest(pointer.position, this.sprites);
             // p2 uses different coordinate system, so convert the pointer position to p2's coordinate system
             let physicsPos = [this.game.physics.p2.pxmi(pointer.position.x), this.game.physics.p2.pxmi(pointer.position.y)];
@@ -34,12 +33,12 @@ namespace WaterSkillGame.Prefabs {
             }
         }
 
-        private release() {
+        private release(): void {
             // remove constraint from object's body
             this.game.physics.p2.removeConstraint(this.mouseConstraint);
         }
 
-        private move(pointer: any) {
+        private move(pointer: any): void {
             // p2 uses different coordinate system, so convert the pointer position to p2's coordinate system
             this.position[0] = this.game.physics.p2.pxmi(pointer.position.x);
             this.position[1] = this.game.physics.p2.pxmi(pointer.position.y);

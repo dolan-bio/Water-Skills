@@ -9,21 +9,21 @@ namespace WaterSkillGame {
             this.height = height;
         }
 
-        run(container: string, loadedCallback: Function) {
+        public run(container: string, loadedCallback: Function): void {
             // Phaser.AUTO - determine the renderer automatically (canvas, webgl)
             this.game = new Phaser.Game(this.width, this.height, Phaser.AUTO, container, WaterSkillGame.States.MainState);
             this.game.stateLoadedCallback = loadedCallback;
         }
 
-        setItemsArray(array: Array<Models.SkillModel>) {
-            let state = <States.IMainState>this.game.state.getCurrentState();
+        public setItemsArray(array: Array<Models.SkillModel>): void {
+            let state = <States.IMainState> this.game.state.getCurrentState();
             if (state) {
                 state.setItemsArray(array);
             }
         }
 
-        setWaterLevel(percentage: number, delay?: number) {
-            let state = <States.IMainState>this.game.state.getCurrentState();
+        public setWaterLevel(percentage: number, delay?: number): void {
+            let state = <States.IMainState> this.game.state.getCurrentState();
             if (state) {
                 state.setWaterLevel(percentage, delay);
             }

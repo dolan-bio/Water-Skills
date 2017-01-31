@@ -10,7 +10,7 @@ namespace WaterSkillGame.Prefabs {
             this.c = c;
         }
 
-        applyAABBBuoyancyForces(body: Phaser.Physics.P2.Body, planePosition: Phaser.Point) {
+        public applyAABBBuoyancyForces(body: Phaser.Physics.P2.Body, planePosition: Phaser.Point) {
             let centerOfBuoyancy = new Phaser.Point();
 
             // Get shape AABB

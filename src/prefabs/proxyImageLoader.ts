@@ -5,16 +5,16 @@ namespace WaterSkillGame.Prefabs {
             super(game);
         }
 
-        private normaliseKey(key: string) {
-            return key.replace("#", "sharp");
-        }
-
-        load(key: string, callback: (key: string) => void) {
+        public load(key: string, callback: (key: string) => void): void {
             this.image(key, "/api/proxy/images/" + this.normaliseKey(key), false);
             this.onLoadComplete.addOnce(() => {
                 callback(key);
             });
             this.start();
+        }
+
+        private normaliseKey(key: string): string {
+            return key.replace("#", "sharp");
         }
     }
 }

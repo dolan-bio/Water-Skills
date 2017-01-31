@@ -1,8 +1,20 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "module": "system",
+        "target": "es6",
+        "lib": ["es6", "dom"],
+        "noImplicitAny": true,
         "sourceMap": false,
-        "outFile": "../client/components/water/app.js",
-        "rootDir": "src"
-    }
+        "outFile": "./dist/bundle.js",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "include": [
+        "src/**/*",
+        "typings/**/*"
+    ],
+    "exclude": [
+        "./node_modules",
+        "./dist"
+    ]
 }

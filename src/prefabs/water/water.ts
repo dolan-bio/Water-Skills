@@ -20,7 +20,7 @@ namespace WaterSkillGame.Prefabs {
             this.game.physics.p2.enable(this);
         }
 
-        update(...graphicsCollection: Phaser.Graphics[]) {
+        public update(...graphicsCollection: Phaser.Graphics[]): void {
             for (let i = 0; i < this.waterPoints.length - 2; i++) {
                 this.waterPoints[i].update(0.025, 0.025);
             }
@@ -42,10 +42,11 @@ namespace WaterSkillGame.Prefabs {
                 }
 
                 for (let i = 0; i < this.waterPoints.length - 3; i++) {
-                    if (i > 0)
+                    if (i > 0) {
                         this.waterPoints[i - 1].y += leftDeltas[i];
-                    if (i < this.waterPoints.length - 1)
+                    } else if (i < this.waterPoints.length - 1) {
                         this.waterPoints[i + 1].y += rightDeltas[i];
+                    }
                 }
             }
 
@@ -58,7 +59,41 @@ namespace WaterSkillGame.Prefabs {
             });
         }
 
-        private fixWaterPositions() {
+        public splash(position: number, speed: number): void {
+            let singleLength = this.game.width / this.resolution;
+            let index = Math.round(position / singleLength);
+            if (index >= 0 && index < this.waterPoints.length) {
+                this.waterPoints[index].speed = speed;
+            }
+        }
+
+        public setLevel(percentage?: number, delay?: number, callback?: () => void): void {
+            if (delay !== undefined) {
+                delay = Phaser.Timer.SECOND * 2;
+            }
+            if (percentage !== undefined) {
+                this.level = percentage;
+            }
+
+            for (let i = 0; i < this.waterPoints.length - 2; i++) {
+                // this.waterPoints[i].setLevel(this.calculateWaterHeight(), delay, callback);
+            }
+        }
+
+        public resize(): void {
+            this.setLevel(this.level);
+        }
+
+        public getWaterLevel(position: number): Phaser.Point {
+            let singleLength = this.game.width / this.resolution;
+            let index = Math.round(position / singleLength);
+            if (index >= this.waterPoints.length || index < 0) {
+                return new Phaser.Point(0, this.waterPoints[0].y);
+            }
+            return new Phaser.Point(0, this.waterPoints[index].y);
+        }
+
+        private fixWaterPositions(): void {
             let singleLength = this.game.width / this.resolution;
             for (let i = 0; i <= this.waterPoints.length - 3; i++) {
                 this.waterPoints[i].x = singleLength * i;
@@ -70,44 +105,8 @@ namespace WaterSkillGame.Prefabs {
             this.waterPoints[this.waterPoints.length - 1].y = this.game.height;
         }
 
-
-
         private calculateWaterHeight(): number {
             return this.game.height - (this.game.height * this.level);
-        }
-
-        public splash(position: number, speed: number) {
-            let singleLength = this.game.width / this.resolution;
-            let index = Math.round(position / singleLength);
-            if (index >= 0 && index < this.waterPoints.length) {
-                this.waterPoints[index].speed = speed;
-            }
-        }
-
-        public setLevel(percentage?: number, delay?: number, callback?: () => void) {
-            if (_.isUndefined(delay)) {
-                delay = Phaser.Timer.SECOND * 2;
-            }
-            if (!_.isUndefined(percentage)) {
-                this.level = percentage;
-            }
-
-            for (let i = 0; i < this.waterPoints.length - 2; i++) {
-                this.waterPoints[i].setLevel(this.calculateWaterHeight(), delay, callback);
-            };
-        }
-
-        public resize() {
-            this.setLevel(this.level);
-        }
-
-        public getWaterLevel(position: number): Phaser.Point {
-            let singleLength = this.game.width / this.resolution;
-            let index = Math.round(position / singleLength);
-            if (index >= this.waterPoints.length || index < 0) {
-                return new Phaser.Point(0, this.waterPoints[0].y);
-            }
-            return new Phaser.Point(0, this.waterPoints[index].y);
         }
     }
 }
