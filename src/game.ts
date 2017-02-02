@@ -8,10 +8,6 @@ namespace WaterSkillGame {
         private width: number;
         private height: number;
 
-        constructor(width: number, height: number) {
-            this.width = width;
-            this.height = height;
-        }
 
         public run(container: string, loadedCallback: Function): void {
             // Phaser.AUTO - determine the renderer automatically (canvas, webgl)
@@ -19,15 +15,15 @@ namespace WaterSkillGame {
             this.game.stateLoadedCallback = loadedCallback;
         }
 
-        public setItemsArray(array: Array<Models.SkillModel>): void {
-            let state = <States.IMainState> this.game.state.getCurrentState();
+        public setItemsArray(array: Models.SkillModel[]): void {
+            const state = this.game.state.getCurrentState() as States.IMainState;
             if (state) {
                 state.setItemsArray(array);
             }
         }
 
         public setWaterLevel(percentage: number, delay?: number): void {
-            let state = <States.IMainState> this.game.state.getCurrentState();
+            const state = this.game.state.getCurrentState() as States.IMainState;
             if (state) {
                 state.setWaterLevel(percentage, delay);
             }

@@ -4,7 +4,7 @@ namespace WaterSkillGame.States {
     }
 
     export interface IMainState extends ExtendedState {
-        setItemsArray(array: Array<Models.SkillModel>): void;
+        setItemsArray(array: Models.SkillModel[]): void;
         setWaterLevel(level?: number, delay?: number): void;
     }
 
@@ -14,7 +14,7 @@ namespace WaterSkillGame.States {
         private water: Prefabs.Water;
         private skillPillFactory: Prefabs.SkillPillFactory;
         private mouseDragHandler: Prefabs.MouseDragHandler;
-        private skillPills: Array<Prefabs.SkillPill>;
+        private skillPills: Prefabs.SkillPill[];
 
         private skillPillGroup: Phaser.Group;
         private waterGroup: Phaser.Group;
@@ -25,6 +25,7 @@ namespace WaterSkillGame.States {
         }
 
         public create(): void {
+            console.log('going to state');
             this.skillPillGroup = new Phaser.Group(this.game);
             this.waterGroup = new Phaser.Group(this.game);
             this.waterGroup.z = 10;

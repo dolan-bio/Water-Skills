@@ -76,7 +76,7 @@ namespace WaterSkillGame.Prefabs {
             }
 
             for (let i = 0; i < this.waterPoints.length - 2; i++) {
-                // this.waterPoints[i].setLevel(this.calculateWaterHeight(), delay, callback);
+                this.waterPoints[i].setLevel(this.calculateWaterHeight(), delay, callback);
             }
         }
 

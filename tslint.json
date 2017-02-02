@@ -33,6 +33,9 @@
     ],
     "no-namespace": [
       false
+    ],
+    "max-classes-per-file": [
+      false
     ]
   }
 }
