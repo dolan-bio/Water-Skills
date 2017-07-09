@@ -7,7 +7,10 @@
         "sourceMap": false,
         "outFile": "./dist/bundle.js",
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": true,
+        "types": [
+            "phaser-ce"
+        ]
     },
     "include": [
         "src/**/*",
