@@ -2,12 +2,12 @@
   "name": "@dolan-bio/water-skills",
   "version": "1.0.0",
   "description": "A floaty water physics simulation for all of my skills written in Phaser",
-  "main": "dist/index.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "test": "npm run lint",
     "build": "rimraf dist && tsc -p .",
     "start": "npm run build && http-server .",
-    "postinstall": "npm run build",
+    "postinstall": "typings install && npm run build",
     "lint": "tslint --project ."
   },
   "repository": {
