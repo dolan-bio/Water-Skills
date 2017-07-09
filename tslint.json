@@ -31,11 +31,6 @@
     "max-line-length": [
       false
     ],
-    "no-namespace": [
-      false
-    ],
-    "max-classes-per-file": [
-      false
-    ]
+    "no-string-literal": false
   }
 }
