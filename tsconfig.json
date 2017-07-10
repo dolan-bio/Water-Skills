@@ -1,23 +1,26 @@
 {
     "compilerOptions": {
-        "module": "system",
-        "target": "es6",
-        "lib": ["es6", "dom"],
-        "noImplicitAny": true,
-        "sourceMap": false,
-        "outFile": "./dist/bundle.js",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outDir": "./dist",
+        "sourceMap": true,
+        "target": "es5",
+        "strictNullChecks": true,
+        "declaration": true,
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "es2016",
+            "dom"
+        ],
         "types": [
             "phaser-ce"
         ]
     },
-    "include": [
-        "src/**/*",
-        "typings/**/*"
-    ],
     "exclude": [
-        "./node_modules",
-        "./dist"
+        "./node_modules"
     ]
 }
