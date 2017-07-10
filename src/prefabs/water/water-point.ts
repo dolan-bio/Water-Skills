@@ -20,5 +20,9 @@ export class WaterPoint extends Phaser.Point {
         this.speed += tension * deltaY - this.speed * dampening;
         this.y += this.speed;
     }
+
+    public setLevel(height: number, delay: number, callback: () => void): void {
+
+    }
 }
 
