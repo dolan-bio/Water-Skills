@@ -7,7 +7,7 @@
         "outDir": "./dist",
         "sourceMap": true,
         "target": "es5",
-        "strictNullChecks": true,
+        "strictNullChecks": false,
         "declaration": true,
         "typeRoots": [
             "node_modules/@types"
