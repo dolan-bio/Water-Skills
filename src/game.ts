@@ -4,7 +4,7 @@ import { SkillModel } from "./models/skill-model";
 import { IMainState, MainState } from "./states/main";
 
 export class ExtendedGame extends Phaser.Game {
-    public stateLoadedCallback: Function;
+    public stateLoadedCallback: () => {};
 }
 
 export class Game {
@@ -12,8 +12,7 @@ export class Game {
     private width: number;
     private height: number;
 
-
-    public run(container: string, loadedCallback: Function): void {
+    public run(container: string, loadedCallback: () => {}): void {
         // Phaser.AUTO - determine the renderer automatically (canvas, webgl)
         this.game = new ExtendedGame(this.width, this.height, Phaser.AUTO, container, MainState);
         this.game.stateLoadedCallback = loadedCallback;
@@ -33,4 +32,3 @@ export class Game {
         }
     }
 }
-

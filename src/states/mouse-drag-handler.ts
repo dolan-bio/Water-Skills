@@ -1,7 +1,7 @@
 import * as Phaser from "phaser-ce";
 
 export class MouseDragHandler extends p2.Body {
-    public sprites: Array<Phaser.Sprite>;
+    public sprites: Phaser.Sprite[];
 
     private game: Phaser.Game;
     private mouseConstraint: p2.Constraint;
@@ -18,13 +18,13 @@ export class MouseDragHandler extends p2.Body {
     }
 
     private click(pointer: any): void {
-        let bodies = this.game.physics.p2.hitTest(pointer.position, this.sprites);
+        const bodies = this.game.physics.p2.hitTest(pointer.position, this.sprites);
         // p2 uses different coordinate system, so convert the pointer position to p2's coordinate system
-        let physicsPos = [this.game.physics.p2.pxmi(pointer.position.x), this.game.physics.p2.pxmi(pointer.position.y)];
+        const physicsPos = [this.game.physics.p2.pxmi(pointer.position.x), this.game.physics.p2.pxmi(pointer.position.y)];
 
         if (bodies.length) {
-            let clickedBody = bodies[0];
-            let localPointInBody = [0, 0];
+            const clickedBody = bodies[0];
+            const localPointInBody = [0, 0];
 
             // this function takes physicsPos and coverts it to the body's local coordinate system
             clickedBody.toLocalFrame(localPointInBody, physicsPos);
@@ -45,4 +45,3 @@ export class MouseDragHandler extends p2.Body {
         this.position[1] = this.game.physics.p2.pxmi(pointer.position.y);
     }
 }
-

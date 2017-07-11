@@ -1,12 +1,12 @@
 import * as Phaser from "phaser-ce";
 
-import { SkillModel } from "../models/skill-model";
-import { Water } from "../prefabs/water/water";
 import { ExtendedGame } from "../game";
-import { SkillPillFactory } from "../prefabs/skill-pill/skill-pill-factory";
-import { MouseDragHandler } from "../mouse-drag-handler";
+import { SkillModel } from "../models/skill-model";
 import { SkillPill } from "../prefabs/skill-pill/skill-pill";
+import { SkillPillFactory } from "../prefabs/skill-pill/skill-pill-factory";
+import { Water } from "../prefabs/water/water";
 import { WaterFactory } from "../prefabs/water/water-factory";
+import { MouseDragHandler } from "./mouse-drag-handler";
 
 export class ExtendedState extends Phaser.State {
     public game: ExtendedGame;
@@ -34,7 +34,6 @@ export class MainState extends ExtendedState {
     }
 
     public create(): void {
-        console.log('going to state');
         this.skillPillGroup = new Phaser.Group(this.game);
         this.waterGroup = new Phaser.Group(this.game);
         this.waterGroup.z = 10;
@@ -42,7 +41,7 @@ export class MainState extends ExtendedState {
 
         this.setUpPhysics();
 
-        let waterFactory = new WaterFactory(this.game);
+        const waterFactory = new WaterFactory(this.game);
         this.water = waterFactory.newInstance(0.5);
         // this.waterGroup.add(this.water);
 
@@ -67,7 +66,7 @@ export class MainState extends ExtendedState {
         this.water.update(this.graphics);
         this.graphics.endFill();
 
-        this.skillPills.forEach(skillPill => {
+        this.skillPills.forEach((skillPill) => {
             skillPill.updatePhysics(this.water.getWaterLevel(skillPill.position.x), this.water);
         });
     }
@@ -76,9 +75,9 @@ export class MainState extends ExtendedState {
         this.water.setLevel(level, delay);
     }
 
-    public setItemsArray(array: Array<SkillModel>): void {
-        array.forEach(skillModel => {
-            let skillPill = this.skillPillFactory.newInstance(100, 100, skillModel.skill.name, 100);
+    public setItemsArray(array: SkillModel[]): void {
+        array.forEach((skillModel) => {
+            const skillPill = this.skillPillFactory.newInstance(100, 100, skillModel.skill.name, 100);
             this.game.add.existing(skillPill);
             this.mouseDragHandler.sprites.push(skillPill);
             this.skillPills.push(skillPill);

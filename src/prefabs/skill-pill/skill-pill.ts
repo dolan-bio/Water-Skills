@@ -1,7 +1,7 @@
 import * as Phaser from "phaser-ce";
 
-import { BuoyancyManager } from "./buoyancy-manager";
 import { Water } from "../water/water";
+import { BuoyancyManager } from "./buoyancy-manager";
 
 export class SkillPill extends Phaser.Sprite {
 
@@ -24,7 +24,7 @@ export class SkillPill extends Phaser.Sprite {
         //var textSprite = this.add.sprite(this.world.centerX - 100, this.world.centerY - 200, null);
         this.addChild(text);
         //this.physics.enable(textSprite, Phaser.Physics.ARCADE);
-        /*textSprite.body.bounce.y = 1; 
+        /*textSprite.body.bounce.y = 1;
         textSprite.body.gravity.y = 2000;
         textSprite.body.collideWorldBounds = true;*/
     }
@@ -42,11 +42,7 @@ export class SkillPill extends Phaser.Sprite {
             water.splash(this.x, this.body.velocity.y / 10);
         }
 
-        if (this.y > this.game.height / 2) {
-            this.inWater = true;
-        } else {
-            this.inWater = false;
-        }
+        this.inWater = this.y > this.game.height / 2 ? true : false;
         /*var velocity = [];
         this.body.getVelocityAtPoint(velocity, [0, 0]);
         var velocityVector = new Phaser.Point(velocity[0], velocity[1]);

@@ -1,7 +1,6 @@
 import { BuoyancyManager } from "./buoyancy-manager";
-
-import { SkillPill } from "./skill-pill";
 import { ProxyImageLoader } from "./proxy-image-loader";
+import { SkillPill } from "./skill-pill";
 
 export class SkillPillFactory {
 
@@ -13,9 +12,9 @@ export class SkillPillFactory {
         this.imageLoader = new ProxyImageLoader(game);
     }
 
-    newInstance(x: number, y: number, term: string, size: number): SkillPill {
-        let buoyancyManager = new BuoyancyManager(0.04, 0.9);
-        let skillPill = new SkillPill(this.game, x, y, buoyancyManager);
+    public newInstance(x: number, y: number, term: string, size: number): SkillPill {
+        const buoyancyManager = new BuoyancyManager(0.04, 0.9);
+        const skillPill = new SkillPill(this.game, x, y, buoyancyManager);
         this.imageLoader.load(term, (key) => {
             skillPill.loadTexture(key);
             skillPill.scale.setTo(size / skillPill.width);

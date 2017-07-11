@@ -11,11 +11,11 @@ export class BuoyancyManager {
         this.c = c;
     }
 
-    public applyAABBBuoyancyForces(body: Phaser.Physics.P2.Body, planePosition: Phaser.Point) {
+    public applyAABBBuoyancyForces(body: Phaser.Physics.P2.Body, planePosition: Phaser.Point): void {
         let centerOfBuoyancy = new Phaser.Point();
 
         // Get shape AABB
-        let bounds = body.sprite.getBounds();
+        const bounds = body.sprite.getBounds();
         let areaUnderWater: number;
 
         if (bounds.y > planePosition.y) {
@@ -24,8 +24,8 @@ export class BuoyancyManager {
             areaUnderWater = body.sprite.width * body.sprite.height;
         } else if (bounds.y + bounds.height > planePosition.y) {
             // Partially submerged
-            let width = bounds.width;
-            let height = Math.abs(bounds.y - planePosition.y);
+            const width = bounds.width;
+            const height = Math.abs(bounds.y - planePosition.y);
             // areaUnderWater = width * height;
             areaUnderWater = body.sprite.width * body.sprite.height;
             centerOfBuoyancy = body.sprite.position;
