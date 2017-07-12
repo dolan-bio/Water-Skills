@@ -1,7 +1,7 @@
 import * as Phaser from "phaser-ce";
 
 import { ExtendedGame } from "../game";
-import { SkillModel } from "../models/skill-model";
+import { ISkillModel } from "../models/skill-model";
 import { SkillPill } from "../prefabs/skill-pill/skill-pill";
 import { SkillPillFactory } from "../prefabs/skill-pill/skill-pill-factory";
 import { Water } from "../prefabs/water/water";
@@ -13,7 +13,7 @@ export class ExtendedState extends Phaser.State {
 }
 
 export interface IMainState extends ExtendedState {
-    setItemsArray(array: SkillModel[]): void;
+    setItemsArray(array: ISkillModel[]): void;
     setWaterLevel(level?: number, delay?: number): void;
 }
 
@@ -75,9 +75,9 @@ export class MainState extends ExtendedState {
         this.water.setLevel(level, delay);
     }
 
-    public setItemsArray(array: SkillModel[]): void {
-        array.forEach((skillModel) => {
-            const skillPill = this.skillPillFactory.newInstance(100, 100, skillModel.skill.name, 100);
+    public setItemsArray(array: ISkillModel[]): void {
+        array.forEach((skill) => {
+            const skillPill = this.skillPillFactory.newInstance(100, 100, skill, 100);
             this.game.add.existing(skillPill);
             this.mouseDragHandler.sprites.push(skillPill);
             this.skillPills.push(skillPill);

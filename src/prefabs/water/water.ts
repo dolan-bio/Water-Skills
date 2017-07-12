@@ -28,8 +28,8 @@ export class Water extends Phaser.Polygon {
             this.waterPoints[i].update(0.025, 0.025);
         }
 
-        let leftDeltas = Array<number>();
-        let rightDeltas = Array<number>();
+        const leftDeltas = Array<number>();
+        const rightDeltas = Array<number>();
 
         // do some passes where this.waterPoints pull on their neighbours
         for (let j = 0; j < this.passThroughs; j++) {
@@ -55,7 +55,7 @@ export class Water extends Phaser.Polygon {
 
         this.fixWaterPositions();
 
-        graphicsCollection.forEach(graphics => {
+        graphicsCollection.forEach((graphics) => {
             graphics.beginFill(0x4da6ff, 0.5);
             this.points = this.waterPoints;
             graphics.drawPolygon(this.points);
@@ -63,8 +63,8 @@ export class Water extends Phaser.Polygon {
     }
 
     public splash(position: number, speed: number): void {
-        let singleLength = this.game.width / this.resolution;
-        let index = Math.round(position / singleLength);
+        const singleLength = this.game.width / this.resolution;
+        const index = Math.round(position / singleLength);
         if (index >= 0 && index < this.waterPoints.length) {
             this.waterPoints[index].speed = speed;
         }
@@ -88,8 +88,8 @@ export class Water extends Phaser.Polygon {
     }
 
     public getWaterLevel(position: number): Phaser.Point {
-        let singleLength = this.game.width / this.resolution;
-        let index = Math.round(position / singleLength);
+        const singleLength = this.game.width / this.resolution;
+        const index = Math.round(position / singleLength);
         if (index >= this.waterPoints.length || index < 0) {
             return new Phaser.Point(0, this.waterPoints[0].y);
         }
@@ -97,7 +97,7 @@ export class Water extends Phaser.Polygon {
     }
 
     private fixWaterPositions(): void {
-        let singleLength = this.game.width / this.resolution;
+        const singleLength = this.game.width / this.resolution;
         for (let i = 0; i <= this.waterPoints.length - 3; i++) {
             this.waterPoints[i].x = singleLength * i;
         }

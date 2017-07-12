@@ -16,7 +16,7 @@ export class WaterPoint extends Phaser.Point {
     }
 
     public update(dampening: number, tension: number): void {
-        let deltaY = this.targetHeight - this.y;
+        const deltaY = this.targetHeight - this.y;
         this.speed += tension * deltaY - this.speed * dampening;
         this.y += this.speed;
     }
@@ -25,4 +25,3 @@ export class WaterPoint extends Phaser.Point {
 
     }
 }
-

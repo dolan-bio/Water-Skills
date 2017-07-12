@@ -1,5 +1,4 @@
-export class SkillModel {
-    public skill: {
-        name: string;
-    };
+export interface ISkillModel {
+    name: string;
+    id: string;
 }

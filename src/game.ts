@@ -1,6 +1,6 @@
 import * as Phaser from "phaser-ce";
 
-import { SkillModel } from "./models/skill-model";
+import { ISkillModel } from "./models/skill-model";
 import { IMainState, MainState } from "./states/main";
 
 export class ExtendedGame extends Phaser.Game {
@@ -18,7 +18,7 @@ export class Game {
         this.game.stateLoadedCallback = loadedCallback;
     }
 
-    public setItemsArray(array: SkillModel[]): void {
+    public setItemsArray(array: ISkillModel[]): void {
         const state = this.game.state.getCurrentState() as IMainState;
         if (state) {
             state.setItemsArray(array);
