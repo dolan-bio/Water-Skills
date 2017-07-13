@@ -1,17 +1,10 @@
 import * as Phaser from "phaser-ce";
 
 export class WaterPoint extends Phaser.Point {
-    public targetHeight: number;
     public speed: number;
 
-    private k: number;
-    private game: Phaser.Game;
-
-    constructor(game: Phaser.Game, x: number, y: number, targetHeight: number, k: number) {
+    constructor(private game: Phaser.Game, x: number, y: number, private targetHeight: number, private k: number) {
         super(x, y);
-        this.targetHeight = targetHeight;
-        this.k = k;
-        this.game = game;
         this.speed = 0;
     }
 
