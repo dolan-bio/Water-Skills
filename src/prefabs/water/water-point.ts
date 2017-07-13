@@ -22,6 +22,6 @@ export class WaterPoint extends Phaser.Point {
     }
 
     public setLevel(height: number, delay: number, callback: () => void): void {
-
+        // No use
     }
 }
