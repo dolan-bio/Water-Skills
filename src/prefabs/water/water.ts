@@ -7,15 +7,15 @@ export class Water extends Phaser.Polygon {
     private passThroughs: number;
     private spread: number;
 
-    constructor(private game: Phaser.Game, private level: number, private resolution: number, points: Phaser.Point[], private waterPoints: WaterPoint[]) {
-        super(points);
+    constructor(private game: Phaser.Game, private level: number, private resolution: number, private waterPoints: WaterPoint[]) {
+        super(waterPoints);
         this.passThroughs = 1;
         this.spread = 0.25;
 
         this.game.physics.p2.enable(this);
     }
 
-    public update(...graphicsCollection: Phaser.Graphics[]): void {
+    public update(graphics: Phaser.Graphics): void {
         for (let i = 0; i < this.waterPoints.length - 2; i++) {
             this.waterPoints[i].update(0.025, 0.025);
         }
@@ -47,11 +47,9 @@ export class Water extends Phaser.Polygon {
 
         this.fixWaterPositions();
 
-        graphicsCollection.forEach((graphics) => {
-            graphics.beginFill(0x4da6ff, 0.5);
-            this.points = this.waterPoints;
-            graphics.drawPolygon(this.points);
-        });
+        graphics.beginFill(0x4da6ff, 0.5);
+        this.points = this.waterPoints;
+        graphics.drawPolygon(this.points);
     }
 
     public splash(position: number, speed: number): void {
@@ -90,9 +88,5 @@ export class Water extends Phaser.Polygon {
         this.waterPoints[this.waterPoints.length - 2].y = this.game.height;
 
         this.waterPoints[this.waterPoints.length - 1].y = this.game.height;
-    }
-
-    private calculateWaterHeight(): number {
-        return this.game.height - (this.game.height * this.level);
     }
 }

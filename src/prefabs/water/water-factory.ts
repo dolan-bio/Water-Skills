@@ -18,8 +18,8 @@ export class WaterFactory {
     public newInstance(level: number): Water {
         const waterHeight = this.game.height - (this.game.height * level);
         const waterPoints = this.createwaterPoints(this.resolution, waterHeight, this.k);
-        const points = this.createWater(waterPoints);
-        return new Water(this.game, level, this.resolution, points, waterPoints);
+        this.createWater(waterPoints);
+        return new Water(this.game, level, this.resolution, waterPoints);
     }
 
     private createwaterPoints(resolution: number, waterHeight: number, k: number): WaterPoint[] {
@@ -32,9 +32,9 @@ export class WaterFactory {
         return points;
     }
 
-    private createWater(waterPoints: Phaser.Point[]): Phaser.Point[] {
+    private createWater(waterPoints: Phaser.Point[]): void {
+        // Bug right here with references
         waterPoints.push(new Phaser.Point(this.game.width, this.game.height));
         waterPoints.push(new Phaser.Point(0, this.game.height));
-        return waterPoints;
     }
 }
