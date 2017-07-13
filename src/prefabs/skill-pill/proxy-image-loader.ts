@@ -6,15 +6,11 @@ export class ProxyImageLoader extends Phaser.Loader {
         super(game);
     }
 
-    public load(key: string, callback: (key: string) => void): void {
-        this.image(key, "/api/proxy/images/" + this.normaliseKey(key), false);
+    public load(id: string, base64: string, callback: (key: string) => void): void {
+        this.image(id, base64);
         this.onLoadComplete.addOnce(() => {
-            callback(key);
+            callback(id);
         });
         this.start();
-    }
-
-    private normaliseKey(key: string): string {
-        return key.replace("#", "sharp");
     }
 }
