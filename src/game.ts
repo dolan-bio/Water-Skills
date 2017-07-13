@@ -14,7 +14,7 @@ export class Game {
 
     public run(container: string, loadedCallback: () => void): void {
         // Phaser.AUTO - determine the renderer automatically (canvas, webgl)
-        this.game = new ExtendedGame(this.width, this.height, Phaser.AUTO, container, MainState);
+        this.game = new ExtendedGame(this.width, this.height, Phaser.AUTO, container, MainState, true);
         this.game.stateLoadedCallback = loadedCallback;
     }
 
