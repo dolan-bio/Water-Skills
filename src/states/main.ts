@@ -39,7 +39,7 @@ export class MainState extends ExtendedState {
         this.setUpPhysics();
 
         const waterFactory = new WaterFactory(this.game);
-        this.water = waterFactory.newInstance(0.3);
+        this.water = waterFactory.newInstance(300);
 
         this.game.stage.backgroundColor = 0xF5F5F5;
         this.game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
@@ -50,7 +50,7 @@ export class MainState extends ExtendedState {
         this.skillPillFactory = new SkillPillFactory(this.game);
 
         this.game.scale.onSizeChange.add(() => {
-            this.water.setLevel();
+            this.water.setHeight();
         });
 
         this.mouseDragHandler = new MouseDragHandler(this.game);

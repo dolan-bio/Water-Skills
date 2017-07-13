@@ -15,11 +15,11 @@ export class WaterFactory {
         this.resolution = 20;
     }
 
-    public newInstance(level: number): Water {
-        const waterHeight = this.game.height - (this.game.height * level);
+    public newInstance(pixels: number): Water {
+        const waterHeight = this.game.height - pixels;
         const waterPoints = this.createwaterPoints(this.resolution, waterHeight, this.k);
         this.createWater(waterPoints);
-        return new Water(this.game, level, this.resolution, waterPoints);
+        return new Water(this.game, pixels, this.resolution, waterPoints);
     }
 
     private createwaterPoints(resolution: number, waterHeight: number, k: number): WaterPoint[] {

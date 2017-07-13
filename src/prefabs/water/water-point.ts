@@ -13,4 +13,9 @@ export class WaterPoint extends Phaser.Point {
         this.speed += tension * deltaY - this.speed * dampening;
         this.y += this.speed;
     }
+
+    public setHeight(height: number): void {
+        this.targetHeight = height;
+        this.y = height;
+    }
 }
