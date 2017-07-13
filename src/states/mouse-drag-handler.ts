@@ -17,7 +17,7 @@ export class MouseDragHandler extends p2.Body {
         game.input.addMoveCallback(this.move, this);
     }
 
-    private click(pointer: any): void {
+    private click(pointer: Phaser.Pointer): void {
         const bodies = this.game.physics.p2.hitTest(pointer.position, this.sprites);
         // p2 uses different coordinate system, so convert the pointer position to p2's coordinate system
         const physicsPos = [this.game.physics.p2.pxmi(pointer.position.x), this.game.physics.p2.pxmi(pointer.position.y)];
@@ -39,7 +39,7 @@ export class MouseDragHandler extends p2.Body {
         this.game.physics.p2.removeConstraint(this.mouseConstraint);
     }
 
-    private move(pointer: any): void {
+    private move(pointer: Phaser.Pointer): void {
         // p2 uses different coordinate system, so convert the pointer position to p2's coordinate system
         this.position[0] = this.game.physics.p2.pxmi(pointer.position.x);
         this.position[1] = this.game.physics.p2.pxmi(pointer.position.y);
