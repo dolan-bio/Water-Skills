@@ -33,7 +33,7 @@ export class Water extends Phaser.Polygon {
 
         // do some passes where this.waterPoints pull on their neighbours
         for (let j = 0; j < this.passThroughs; j++) {
-            for (let i = 0; i < this.waterPoints.length - 3; i++) {
+            for (let i = 0; i < this.waterPoints.length - 2; i++) {
                 if (i > 0) {
                     leftDeltas[i] = this.spread * (this.waterPoints[i].y - this.waterPoints[i - 1].y);
                     this.waterPoints[i - 1].speed += leftDeltas[i];
@@ -44,7 +44,7 @@ export class Water extends Phaser.Polygon {
                 }
             }
 
-            for (let i = 0; i < this.waterPoints.length - 3; i++) {
+            for (let i = 0; i < this.waterPoints.length - 2; i++) {
                 if (i > 0) {
                     this.waterPoints[i - 1].y += leftDeltas[i];
                 } else if (i < this.waterPoints.length - 1) {
