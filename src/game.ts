@@ -9,12 +9,10 @@ export class ExtendedGame extends Phaser.Game {
 
 export class Game {
     private game: ExtendedGame;
-    private width: number;
-    private height: number;
 
     public run(container: string, loadedCallback: () => void): void {
         // Phaser.AUTO - determine the renderer automatically (canvas, webgl)
-        this.game = new ExtendedGame(this.width, this.height, Phaser.AUTO, container, MainState, true);
+        this.game = new ExtendedGame(undefined, undefined, Phaser.AUTO, container, MainState, true);
         this.game.stateLoadedCallback = loadedCallback;
     }
 

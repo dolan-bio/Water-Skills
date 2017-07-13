@@ -1,14 +1,10 @@
 import * as Phaser from "phaser-ce";
 
+// k = up force per submerged "volume"
 export class BuoyancyManager {
     private liftForce: Phaser.Point = new Phaser.Point();
-    private k: number = 100; // up force per submerged "volume"
-    private c: number = 0.8; // viscosity
-    private v = [0, 0];
 
-    constructor(k: number, c: number) {
-        this.k = k;
-        this.c = c;
+    constructor(private k: number = 100, private viscosity: number = 0.8) {
     }
 
     public applyAABBBuoyancyForces(body: Phaser.Physics.P2.Body, planePosition: Phaser.Point): void {
@@ -45,8 +41,8 @@ export class BuoyancyManager {
         centerOfBuoyancy = Phaser.Point.subtract(centerOfBuoyancy, body.sprite.position);
 
         // Apply forces
-        body.velocity.x = body.velocity.x * this.c;
-        body.velocity.y = body.velocity.y * this.c;
+        body.velocity.x = body.velocity.x * this.viscosity;
+        body.velocity.y = body.velocity.y * this.viscosity;
         body.angularDamping = 0.9;
         // body.applyForce([this.viscousForce.x, this.viscousForce.y], centerOfBuoyancy.x, centerOfBuoyancy.y);
         if (this.liftForce.y > 0) {

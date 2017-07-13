@@ -4,13 +4,10 @@ import { Water } from "./water";
 import { WaterPoint } from "./water-point";
 
 export class WaterFactory {
-
-    private game: Phaser.Game;
     private k: number;
     private resolution: number;
 
-    constructor(game: Phaser.Game) {
-        this.game = game;
+    constructor(private game: Phaser.Game) {
         this.k = 0.025;
         this.resolution = 20;
     }

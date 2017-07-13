@@ -4,12 +4,9 @@ import { ProxyImageLoader } from "./proxy-image-loader";
 import { SkillPill } from "./skill-pill";
 
 export class SkillPillFactory {
-
-    private game: Phaser.Game;
     private imageLoader: ProxyImageLoader;
 
-    constructor(game: Phaser.Game) {
-        this.game = game;
+    constructor(private game: Phaser.Game) {
         this.imageLoader = new ProxyImageLoader(game);
     }
 

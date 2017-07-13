@@ -18,7 +18,6 @@ export interface IMainState extends ExtendedState {
 }
 
 export class MainState extends ExtendedState {
-
     private graphics: Phaser.Graphics;
     private water: Water;
     private skillPillFactory: SkillPillFactory;

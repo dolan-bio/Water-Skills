@@ -4,7 +4,6 @@ import { Water } from "../water/water";
 import { BuoyancyManager } from "./buoyancy-manager";
 
 export class SkillPill extends Phaser.Sprite {
-
     private inWater: boolean;
 
     constructor(game: Phaser.Game, x: number, y: number, private buoyancyManager: BuoyancyManager) {

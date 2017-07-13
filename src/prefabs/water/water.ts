@@ -3,7 +3,6 @@ import * as Phaser from "phaser-ce";
 import { WaterPoint } from "./water-point";
 
 export class Water extends Phaser.Polygon {
-
     private passThroughs: number;
     private spread: number;
 

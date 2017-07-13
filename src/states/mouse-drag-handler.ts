@@ -2,13 +2,10 @@ import * as Phaser from "phaser-ce";
 
 export class MouseDragHandler extends p2.Body {
     public sprites: Phaser.Sprite[];
-
-    private game: Phaser.Game;
     private mouseConstraint: p2.Constraint;
 
-    constructor(game: Phaser.Game) {
+    constructor(private game: Phaser.Game) {
         super();
-        this.game = game;
         this.sprites = [];
 
         game.physics.p2.world.addBody(this);
