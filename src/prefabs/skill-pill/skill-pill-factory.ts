@@ -16,7 +16,7 @@ export class SkillPillFactory {
     public newInstance(x: number, y: number, skill: ISkillModel, size: number): SkillPill {
         const buoyancyManager = new BuoyancyManager(0.04, 0.9);
         const skillPill = new SkillPill(this.game, x, y, buoyancyManager);
-        this.imageLoader.load(skill.id, skill.base64, (key) => {
+        this.imageLoader.load(skill.name, skill.image, (key) => {
             skillPill.loadTexture(key);
             skillPill.scale.setTo(size / skillPill.width);
             skillPill.body.setRectangleFromSprite(skillPill);
