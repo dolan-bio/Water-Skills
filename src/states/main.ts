@@ -71,10 +71,6 @@ export class MainState extends ExtendedState {
         });
     }
 
-    public setWaterLevel(level?: number, delay?: number): void {
-        this.water.setLevel(level, delay);
-    }
-
     public setItemsArray(array: ISkillModel[]): void {
         array.forEach((skill) => {
             const skillPill = this.skillPillFactory.newInstance(100, 100, skill, 100);

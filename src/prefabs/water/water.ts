@@ -77,14 +77,6 @@ export class Water extends Phaser.Polygon {
         if (percentage !== undefined) {
             this.level = percentage;
         }
-
-        for (let i = 0; i < this.waterPoints.length - 2; i++) {
-            this.waterPoints[i].setLevel(this.calculateWaterHeight(), delay, callback);
-        }
-    }
-
-    public resize(): void {
-        this.setLevel(this.level);
     }
 
     public getWaterLevel(position: number): Phaser.Point {

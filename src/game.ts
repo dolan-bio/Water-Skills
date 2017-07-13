@@ -24,11 +24,4 @@ export class Game {
             state.setItemsArray(array);
         }
     }
-
-    public setWaterLevel(percentage: number, delay?: number): void {
-        const state = this.game.state.getCurrentState() as IMainState;
-        if (state) {
-            state.setWaterLevel(percentage, delay);
-        }
-    }
 }
