@@ -26,7 +26,6 @@ export class MainState extends ExtendedState {
     private skillPills: SkillPill[];
 
     private skillPillGroup: Phaser.Group;
-    private waterGroup: Phaser.Group;
 
     constructor() {
         super();
@@ -35,15 +34,12 @@ export class MainState extends ExtendedState {
 
     public create(): void {
         this.skillPillGroup = new Phaser.Group(this.game);
-        this.waterGroup = new Phaser.Group(this.game);
-        this.waterGroup.z = 10;
         this.skillPillGroup.z = 1;
 
         this.setUpPhysics();
 
         const waterFactory = new WaterFactory(this.game);
-        this.water = waterFactory.newInstance(0.5);
-        // this.waterGroup.add(this.water);
+        this.water = waterFactory.newInstance(0.3);
 
         this.game.stage.backgroundColor = 0xF5F5F5;
         this.game.scale.scaleMode = Phaser.ScaleManager.RESIZE;

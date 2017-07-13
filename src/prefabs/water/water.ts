@@ -4,21 +4,13 @@ import { WaterPoint } from "./water-point";
 
 export class Water extends Phaser.Polygon {
 
-    private game: Phaser.Game;
-    private waterPoints: WaterPoint[];
     private passThroughs: number;
     private spread: number;
-    private resolution: number;
-    private level: number;
 
-    constructor(game: Phaser.Game, level: number, resolution: number, points: Phaser.Point[], waterPoints: WaterPoint[]) {
+    constructor(private game: Phaser.Game, private level: number, private resolution: number, points: Phaser.Point[], private waterPoints: WaterPoint[]) {
         super(points);
-        this.game = game;
         this.passThroughs = 1;
         this.spread = 0.25;
-        this.resolution = resolution;
-        this.level = level;
-        this.waterPoints = waterPoints;
 
         this.game.physics.p2.enable(this);
     }
