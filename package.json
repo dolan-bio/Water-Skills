@@ -23,7 +23,10 @@
   "devDependencies": {
     "http-server": "^0.9.0",
     "tslint": "^5.5.0",
-    "typescript": "^2.4.1"
+    "typescript": "^2.4.1",
+    "p2": "^0.7.1",
+    "pixi.js": "^4.5.3",
+    "phaser-ce": "2.8.1"
   },
   "types": "dist/game.d.ts",
   "dependencies": {
@@ -32,6 +35,6 @@
   "peerDependencies": {
     "p2": "^0.7.1",
     "pixi.js": "^4.5.3",
-    "phaser-ce": "^2.8.1"
+    "phaser-ce": "2.8.1"
   }
 }
