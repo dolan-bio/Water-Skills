@@ -51,6 +51,10 @@ export class Water extends Phaser.Polygon {
         return new Phaser.Point(0, this.waterPoints[index].y);
     }
 
+    public get Height(): number {
+        return this.pixels;
+    }
+
     private applyPhysics(): void {
         const leftDeltas = Array<number>();
         const rightDeltas = Array<number>();

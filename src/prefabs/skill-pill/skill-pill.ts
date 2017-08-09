@@ -19,14 +19,16 @@ export class SkillPill extends Phaser.Sprite {
             this.buoyancyManager.applyAABBBuoyancyForces(this.body, point);
         }
 
-        if (this.y > this.game.height / 2 && !this.inWater) {
+        const waterLevel = this.game.height - water.Height;
+
+        if (this.y > waterLevel && !this.inWater) {
             water.splash(this.x, this.body.velocity.y / 10);
         }
 
-        if (this.y < this.game.height / 2 && this.inWater) {
+        if (this.y < waterLevel && this.inWater) {
             water.splash(this.x, this.body.velocity.y / 10);
         }
 
-        this.inWater = this.y > this.game.height / 2 ? true : false;
+        this.inWater = this.y > waterLevel ? true : false;
     }
 }
