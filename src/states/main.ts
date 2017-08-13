@@ -58,8 +58,8 @@ export class MainState extends ExtendedState {
 
     public update(): void {
         this.graphics.clear();
+
         this.water.update(this.graphics);
-        this.graphics.endFill();
 
         this.skillPills.forEach((skillPill) => {
             skillPill.updatePhysics(this.water.getWaterLevel(skillPill.position.x), this.water);
