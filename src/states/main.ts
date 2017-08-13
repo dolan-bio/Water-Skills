@@ -61,6 +61,10 @@ export class MainState extends ExtendedState {
 
         this.water.update(this.graphics);
 
+        this.graphics.beginFill(0x4da6ff, 0.5);
+        this.graphics.drawPolygon(this.water.points);
+        this.graphics.endFill();
+
         this.skillPills.forEach((skillPill) => {
             skillPill.updatePhysics(this.water.getWaterLevel(skillPill.position.x), this.water);
         });

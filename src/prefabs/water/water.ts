@@ -23,10 +23,6 @@ export class Water extends Phaser.Polygon {
         this.fixWaterPositions();
         this.anchorBottomPoints();
         this.points = this.waterPoints;
-
-        graphics.beginFill(0x4da6ff, 0.5);
-        graphics.drawPolygon(this.points);
-        graphics.endFill();
     }
 
     public splash(position: number, speed: number): void {
