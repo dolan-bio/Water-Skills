@@ -22,18 +22,15 @@ export class MainState extends ExtendedState {
     private water: Water;
     private skillPillFactory: SkillPillFactory;
     private mouseDragHandler: MouseDragHandler;
-    private skillPills: SkillPill[];
 
     private skillPillGroup: Phaser.Group;
 
     constructor() {
         super();
-        this.skillPills = new Array<SkillPill>();
     }
 
     public create(): void {
         this.skillPillGroup = new Phaser.Group(this.game);
-        this.skillPillGroup.z = 1;
 
         this.setUpPhysics();
 
@@ -48,24 +45,24 @@ export class MainState extends ExtendedState {
 
         this.skillPillFactory = new SkillPillFactory(this.game);
 
-        this.game.scale.onSizeChange.add(() => {
-            this.water.setHeight();
-        });
-
         this.mouseDragHandler = new MouseDragHandler(this.game);
         this.game.stateLoadedCallback();
+    }
+
+    public resize(): void {
+        this.water.setHeight();
     }
 
     public update(): void {
         this.graphics.clear();
 
-        this.water.update(this.graphics);
+        this.water.update();
 
-        this.graphics.beginFill(0x4da6ff, 0.5);
+        this.graphics.beginFill(0x292b2c, 0.9);
         this.graphics.drawPolygon(this.water.points);
         this.graphics.endFill();
 
-        this.skillPills.forEach((skillPill) => {
+        this.skillPillGroup.children.forEach((skillPill: SkillPill) => {
             skillPill.updatePhysics(this.water.getWaterLevel(skillPill.position.x), this.water);
         });
     }
@@ -75,7 +72,6 @@ export class MainState extends ExtendedState {
             const skillPill = this.skillPillFactory.newInstance(100, 100, skill, 100);
             this.game.add.existing(skillPill);
             this.mouseDragHandler.sprites.push(skillPill);
-            this.skillPills.push(skillPill);
             this.skillPillGroup.add(skillPill);
         });
     }

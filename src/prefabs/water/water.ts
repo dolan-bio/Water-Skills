@@ -12,9 +12,10 @@ export class Water extends Phaser.Polygon {
         this.spread = 0.25;
 
         this.game.physics.p2.enable(this);
+        this.setHeight();
     }
 
-    public update(graphics: Phaser.Graphics): void {
+    public update(): void {
         for (let i = 0; i < this.waterPoints.length - 2; i++) {
             this.waterPoints[i].update(0.025, 0.025);
         }
