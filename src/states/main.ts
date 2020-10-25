@@ -14,7 +14,6 @@ export class ExtendedState extends Phaser.State {
 
 export interface IMainState extends ExtendedState {
     setItemsArray(array: ISkillModel[]): void;
-    setWaterLevel(level?: number, delay?: number): void;
 }
 
 export class MainState extends ExtendedState {
@@ -69,7 +68,7 @@ export class MainState extends ExtendedState {
 
     public setItemsArray(array: ISkillModel[]): void {
         array.forEach((skill) => {
-            const skillPill = this.skillPillFactory.newInstance(100, 100, skill, 100);
+            const skillPill = this.skillPillFactory.newInstance(100, 100, skill);
             this.game.add.existing(skillPill);
             this.mouseDragHandler.sprites.push(skillPill);
             this.skillPillGroup.add(skillPill);

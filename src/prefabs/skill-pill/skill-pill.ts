@@ -3,11 +3,14 @@ import * as Phaser from "phaser-ce";
 import { Water } from "../water/water";
 import { BuoyancyManager } from "./buoyancy-manager";
 
-export class SkillPill extends Phaser.Sprite {
+export class SkillPill extends Phaser.Text {
     private inWater: boolean;
 
-    constructor(game: Phaser.Game, x: number, y: number, private buoyancyManager: BuoyancyManager) {
-        super(game, x, y);
+    constructor(game: Phaser.Game, x: number, y: number, text: string, private buoyancyManager: BuoyancyManager) {
+        super(game, x, y, text, {
+            fill: "white",
+            backgroundColor: "#000",
+        });
 
         this.inWater = false;
         this.game.physics.p2.enable(this);
