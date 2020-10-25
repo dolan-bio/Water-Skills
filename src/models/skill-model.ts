@@ -1,4 +1,4 @@
 export interface ISkillModel {
-    message: string;
-    timestamp: unknown;
+  message: string;
+  timestamp: unknown;
 }
