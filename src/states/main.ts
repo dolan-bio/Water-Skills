@@ -34,7 +34,7 @@ export class MainState extends ExtendedState {
         this.setUpPhysics();
 
         const waterFactory = new WaterFactory(this.game);
-        this.water = waterFactory.newInstance(350);
+        this.water = waterFactory.newInstance(325);
 
         this.game.stage.backgroundColor = 0xF5F5F5;
         this.game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
@@ -57,7 +57,7 @@ export class MainState extends ExtendedState {
 
         this.water.update();
 
-        this.graphics.beginFill(0x292b2c, 0.9);
+        this.graphics.beginFill(0xffffff, 0.8);
         this.graphics.drawPolygon(this.water.points);
         this.graphics.endFill();
 
