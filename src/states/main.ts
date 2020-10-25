@@ -68,7 +68,7 @@ export class MainState extends ExtendedState {
 
   public setItemsArray(array: ISkillModel[]): void {
     array.forEach((skill) => {
-      const skillPill = this.skillPillFactory.newInstance(100, 100, skill);
+      const skillPill = this.skillPillFactory.newInstance(this.randomIntFromInterval(100, this.game.width - 100), 100, skill);
       this.game.add.existing(skillPill);
       this.mouseDragHandler.sprites.push(skillPill);
       this.skillPillGroup.add(skillPill);
@@ -79,5 +79,10 @@ export class MainState extends ExtendedState {
     this.game.physics.startSystem(Phaser.Physics.P2JS);
     this.game.physics.p2.gravity.y = 1000;
     this.game.physics.p2.restitution = 0.3;
+  }
+
+  private randomIntFromInterval(min: number, max: number): number {
+    // https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 }
