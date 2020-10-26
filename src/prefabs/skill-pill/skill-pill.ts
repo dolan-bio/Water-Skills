@@ -19,6 +19,8 @@ export class SkillPill extends Phaser.Text {
       font: "14px 'Anonymous Pro'",
       fill: "white",
       backgroundColor: COLOR_PALATES[Math.floor(Math.random() * COLOR_PALATES.length)][Math.floor(Math.random() * COLOR_PALATES[0].length)],
+      wordWrap: true,
+      wordWrapWidth: 200,
     });
 
     this.inWater = false;
