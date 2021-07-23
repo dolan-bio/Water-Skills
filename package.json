@@ -7,7 +7,6 @@
     "test": "npm run lint",
     "build": "tsc -p .",
     "start": "npm run build && http-server .",
-    "postinstall": "npm run build",
     "lint": "tslint --project .",
     "prettier": "prettier -l \"src/**/*.{ts,scss,html}\"",
     "prettier:fix": "npm run prettier -- --write"
